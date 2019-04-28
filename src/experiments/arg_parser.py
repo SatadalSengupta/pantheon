@@ -174,8 +174,12 @@ def verify_test_args(args):
             sys.exit('Cannot apply --prepend-mm-cmds, --append-mm-cmds or '
                      '--extra-mm-link-args without pantheon tunnels')
 
-    if args.runtime > 60 or args.runtime <= 0:
-        sys.exit('runtime cannot be non-positive or greater than 60 s')
+    # Changes for time-limit less tests -- START
+    # if args.runtime > 60 or args.runtime <= 0:
+    #     sys.exit('runtime cannot be non-positive or greater than 60 s')
+    if args.runtime <= 0:
+        sys.exit('runtime cannot be non-positive')
+    # Changes for time-limit less tests -- END
     if args.flows < 0:
         sys.exit('flow cannot be negative')
     if args.interval < 0:

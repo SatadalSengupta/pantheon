@@ -36,7 +36,10 @@ def main():
 
     if args.option == 'sender':
         cmd = ['iperf', '-Z', 'bbr', '-c', args.ip, '-p', args.port,
-               '-t', '75']
+        # Changes for running beyond 7200 secs -- START
+            #    '-t', '75']
+               '-t', '10000']
+        # Changes for running beyond 7200 secs -- END
         check_call(cmd)
         return
 

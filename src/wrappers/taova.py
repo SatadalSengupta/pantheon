@@ -32,7 +32,10 @@ def main():
         rat_file = path.join(cc_repo, 'RemyCC-2014-100x.dna')
         sh_cmd = (
             'export MIN_RTT=1000000 && %s serverip=%s serverport=%s if=%s '
-            'offduration=1 onduration=1000000 traffic_params=deterministic,'
+            # Changes for running beyond 7200 secs -- START
+            # 'offduration=1 onduration=1000000 traffic_params=deterministic,'
+            'offduration=1 onduration=10000000 traffic_params=deterministic,'
+            # Changes for running beyond 7200 secs -- END
             'num_cycles=1' % (send_src, args.ip, args.port, rat_file))
         check_call(sh_cmd, shell=True)
         return

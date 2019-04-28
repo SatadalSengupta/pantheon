@@ -110,7 +110,10 @@ def main():
         cmd = [recv_src, '--host=%s' % args.ip, '--port=%s' % args.port,
                'https://www.example.org/']
 
-        for _ in range(5):
+        # Changes for running beyond 7200 secs -- START
+        # for _ in range(5):
+        for _ in range(350):
+        # Changes for running beyond 7200 secs -- END
             # suppress stdout as it prints the huge web page received
             with open(os.devnull, 'w') as devnull:
                 if call(cmd, stdout=devnull) == 0:

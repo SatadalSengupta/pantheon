@@ -32,7 +32,10 @@ def main(delta_conf):
     if args.option == 'sender':
         sh_cmd = (
             'export MIN_RTT=1000000 && %s serverip=%s serverport=%s '
-            'offduration=1 onduration=1000000 traffic_params=deterministic,'
+            # Changes for running beyond 7200 secs -- START
+            # 'offduration=1 onduration=1000000 traffic_params=deterministic,'
+            'offduration=1 onduration=10000000 traffic_params=deterministic,'
+            # Changes for running beyond 7200 secs -- END
             'num_cycles=1 cctype=markovian delta_conf=%s'
             % (send_src, args.ip, args.port, delta_conf))
 

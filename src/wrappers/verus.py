@@ -28,7 +28,10 @@ def main():
         return
 
     if args.option == 'sender':
-        cmd = [send_src, '-name', utils.tmp_dir, '-p', args.port, '-t', '75']
+        # Changes for running beyond 7200 secs -- START
+        # cmd = [send_src, '-name', utils.tmp_dir, '-p', args.port, '-t', '75']
+        cmd = [send_src, '-name', utils.tmp_dir, '-p', args.port, '-t', '10000']
+        # Changes for running beyond 7200 secs -- END
         check_call(cmd, cwd=utils.tmp_dir)
         return
 
